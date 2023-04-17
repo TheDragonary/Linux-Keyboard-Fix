@@ -1,4 +1,4 @@
-# Arch-Keyboard-Fix
+# Arch Keyboard Fix
 Fix for keyboard not working after suspend in Arch Linux and Arch-based distros
 
 ## Instructions
