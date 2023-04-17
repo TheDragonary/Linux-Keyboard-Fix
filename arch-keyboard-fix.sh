@@ -7,6 +7,7 @@ sudo chmod 744 /usr/local/bin/reset-input-devices.sh
 
 systemctl enable --now /etc/systemd/system/reset-input-devices-after-sleep.service
 
+cd
 rm ~/Arch-Keyboard-Fix
 
 echo "Fix complete!"
