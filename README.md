@@ -1,5 +1,5 @@
 # Arch-Keyboard-Fix
-Fix for keyboard not working after suspend in Arch Linux
+Fix for keyboard not working after suspend in Arch Linux and Arch-based distros
 
 ## Instructions
 Clone the repo
