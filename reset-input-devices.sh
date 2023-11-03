@@ -1,4 +1,5 @@
-#! /bin/sh
+#!/usr/bin/env bash
+
 # Reset the keyboard driver and USB mouse 
         
 modprobe -r atkbd
