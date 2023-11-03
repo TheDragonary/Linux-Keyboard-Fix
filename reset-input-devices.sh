@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Reset the keyboard driver and USB mouse 
-        
+# Reset the keyboard driver and USB mouse
+
 modprobe -r atkbd
 modprobe atkbd reset=1
 echo "Finished resetting the keyboard."
