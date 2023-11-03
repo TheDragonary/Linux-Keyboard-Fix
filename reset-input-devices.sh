@@ -5,11 +5,12 @@ modprobe -r atkbd
 modprobe atkbd reset=1
 echo "Finished resetting the keyboard."
         
-# Reset every USB device, because we don't know in advance which port
-# the mouse is plugged into. Send errors to /dev/null to avoid 
-# cluttering up the logs.
-for USB in /sys/bus/usb/devices/*/authorized; do
-    eval "echo 0 > $USB" 2>/dev/null 
-    eval "echo 1 > $USB" 2>/dev/null
+# Reset all USB human interface devices
+for USB in /sys/bus/usb/devices/*; do
+    if [ "`realpath "$USB/driver"`" = '/sys/bus/usb/drivers/usbhid' ]; then
+        echo "Resetting USB human interface device $USB"
+        echo 0 > "$USB/authorized"
+        echo 1 > "$USB/authorized"
+    fi
 done
 echo "Finished resetting USB inputs."
