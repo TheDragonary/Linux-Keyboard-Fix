@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 sudo cp reset-input-devices.sh /usr/local/bin/
 sudo cp reset-input-devices-after-sleep.service /etc/systemd/system/
 
