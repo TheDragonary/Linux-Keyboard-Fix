@@ -6,16 +6,15 @@ Clone the repo
 ```
 git clone https://github.com/TheDragonary/Arch-Keyboard-Fix.git && cd Arch-Keyboard-Fix
 ```
-Make arch-keyboard-fix.sh executable as program and run
+and run
 ```
-chmod +x arch-keyboard-fix.sh
 ./arch-keyboard-fix.sh
 ```
 WARNING: note that the current working directory must be the directory where `arch-keyboard-fix.sh` and the other files are located.
 
 Or you can execute all commands at once:
 ```
-git clone https://github.com/TheDragonary/Arch-Keyboard-Fix.git && cd Arch-Keyboard-Fix && chmod +x arch-keyboard-fix.sh && ./arch-keyboard-fix.sh && cd && rm -rf ~/Arch-Keyboard-Fix
+git clone https://github.com/TheDragonary/Arch-Keyboard-Fix.git && cd Arch-Keyboard-Fix && ./arch-keyboard-fix.sh && cd && rm -rf ~/Arch-Keyboard-Fix
 ```
 
 ## How it works
