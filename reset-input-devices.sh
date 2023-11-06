@@ -20,9 +20,13 @@ echo "Finished resetting the keyboard."
 reset_device()
 {
     local dev="$1"
+    if [ ! -w "$dev/authorized" ]; then
+        echo "Not resetting USB device $dev because $dev/authorized does not exist or is not writable"
+        return
+    fi
     echo "Resetting USB device $dev"
-    echo 0 > "$dev/authorized"
-    echo 1 > "$dev/authorized"
+    timeout 1s echo 0 > "$dev/authorized"
+    timeout 1s echo 1 > "$dev/authorized"
 }
 
 reset_parent_device()
