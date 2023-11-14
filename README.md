@@ -1,5 +1,8 @@
-# Arch Keyboard Fix
-Fix for keyboard not working after suspend in Arch Linux and Arch-based distros
+# Linux Keyboard Fix
+Fix for keyboard not working after suspend in Linux distros
+This is a common problem with Sony VAIO laptops on Linux and this script aims to fix that.
+
+Update(14/11/2023): The script may not work anymore. Also found out that this isn't just a problem with Arch and Arch-based distros but on other Linux distros too such as Debian, Ubuntu and Fedora. For now the only fix is, right after waking up from suspend, press the Caps Lock button (do NOT press any other button) until the LED light turns on, then your keyboard should be working normally after that.
 
 ## Instructions
 Clone the repo
