@@ -1,15 +1,45 @@
-#! /bin/sh
-# Reset the keyboard driver and USB mouse 
-        
+#!/usr/bin/env bash
+
+# Reset the keyboard driver and USB mouse
+
 modprobe -r atkbd
 modprobe atkbd reset=1
 echo "Finished resetting the keyboard."
-        
-# Reset every USB device, because we don't know in advance which port
-# the mouse is plugged into. Send errors to /dev/null to avoid 
-# cluttering up the logs.
-for USB in /sys/bus/usb/devices/*/authorized; do
-    eval "echo 0 > $USB" 2>/dev/null 
-    eval "echo 1 > $USB" 2>/dev/null
+
+
+# Reset all USB human interface devices
+
+# I don't know much about the USB protocol but
+# I have tried a keyboard, a mouse and a stick.
+# All of them showed up as one device with the driver /sys/bus/usb/drivers/usb
+# containing one or more devices with the expected driver
+# /sys/bus/usb/drivers/usbhid or /sys/bus/usb/drivers/usb-storage.
+# After resetting the HID only the keyboard did not work.
+# I needed to reset the parent device, too.
+
+reset_device()
+{
+    local dev="$1"
+    if [ ! -w "$dev/authorized" ]; then
+        echo "Not resetting USB device $dev because $dev/authorized does not exist or is not writable"
+        return
+    fi
+    echo "Resetting USB device $dev"
+    timeout 1s echo 0 > "$dev/authorized"
+    timeout 1s echo 1 > "$dev/authorized"
+}
+
+reset_parent_device()
+{
+    local hid="$1"
+    local usb="${hid%:*}"
+    reset_device "$usb"
+}
+
+for USB in /sys/bus/usb/devices/*; do
+    if [ "`realpath "$USB/driver"`" = '/sys/bus/usb/drivers/usbhid' ]; then
+        reset_device "$USB"
+        reset_parent_device "$USB"
+    fi
 done
 echo "Finished resetting USB inputs."
