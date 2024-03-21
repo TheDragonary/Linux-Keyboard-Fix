@@ -1,4 +1,11 @@
 # Linux Keyboard Fix
+
+UPDATE: Use the fix here instead. This actually works.
+
+https://github.com/mistine/i8042-keyboard-fix-linux
+
+<hr>
+
 Fix for keyboard not working after suspend in Linux distros
 
 This is a common problem with Sony VAIO laptops on Linux and this script aims to fix that.
